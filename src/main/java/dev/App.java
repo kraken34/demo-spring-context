@@ -1,5 +1,6 @@
 package dev;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import dev.ihm.Ecran;
@@ -13,26 +14,48 @@ public class App {
 	public static void main(String[] args) {
 
 		// sans Spring
-		
-//		IAppService appService = new AppServiceSQL();
-//		Ecran ecran = new Ecran(appService );
-//		ecran.afficher();
-		
-		
-		
+
+		// IAppService appService = new AppServiceSQL();
+		// Ecran ecran = new Ecran(appService );
+		// ecran.afficher();
+
 		// Principe : déléguer à un framework la création de vos objets (structure)
 
-		
-		// Créer un contexte
-		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("demo.xml")) {
+		// VERSION - XML
+		/*
+		 * try (ClassPathXmlApplicationContext context = new
+		 * ClassPathXmlApplicationContext("demo.xml")) {
+		 * 
+		 * Ecran2 ecran = context.getBean(Ecran2.class);
+		 * 
+		 * ecran.afficher(); }
+		 */
 
+		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class)) {
 			Ecran2 ecran = context.getBean(Ecran2.class);
-			
-			ecran.afficher();
-			
-			
+			ecran.afficherSaisie();
 			
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	}
 

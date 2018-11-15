@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
 	<!-- IAppService appService = new AppServiceSQL(); -->
 
-	<bean id="appService" class="dev.service.AppServiceMemoire"></bean>
+	<bean id="appService" class="dev.service.AppServiceSQL"></bean>
 
 	<bean id="ecran" class="dev.ihm.Ecran">
 		<constructor-arg ref="appService"></constructor-arg>
 	</bean>
 
-	<bean id="ecran2" class="dev.ihm.Ecran2">
-		<property name="appService" ref="appService"></property>
+	<bean id="ecran2" class="dev.ihm.Ecran2" p:appService-ref="appService">
+	
+	<!--  <property name="appService" ref="appService"></property> -->	
 	</bean>
 
 
